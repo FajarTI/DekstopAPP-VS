@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Xml.Linq;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Latihan_DesktopApp
 {
@@ -18,6 +19,8 @@ namespace Latihan_DesktopApp
     {
         private const string connnection = "server=localhost;database=mandhegsystemparking;uid=root;password=;";
         private MySqlCommand cmd;
+
+
         public Employee()
         {
             InitializeComponent();
@@ -27,9 +30,6 @@ namespace Latihan_DesktopApp
         {
 
         }
-
-
-
         private void Employee_Load(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
@@ -157,11 +157,94 @@ namespace Latihan_DesktopApp
 
         private void btnUpdateEmployee_Click(object sender, EventArgs e)
         {
-            new search().Show();
+            txtID.Visible = true;
+            btnSave.Visible = true;
+            btnCari.Visible = true;
         }
         private void viewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCari_Click(object sender, EventArgs e)
+        {
+
+            MySqlConnection conn = new MySqlConnection(connnection);
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM employee WHERE id = @id", conn);
+                cmd.Parameters.AddWithValue("@id", txtID.Text);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    txtName.Text = reader["name"].ToString();
+                    txtEmail.Text = reader["email"].ToString();
+                    txtAddress.Text = reader["address"].ToString();
+                    txtPhone.Text = reader["phone_number"].ToString();
+
+                    string gender = reader["gender"].ToString();
+                    string birth = reader["date_birth"].ToString();
+
+                    
+
+                    if (gender == "Male")
+                    {
+                        rMale.Checked = true;
+                    }
+                    else if (gender == "Female")
+                    {
+                        rFemale.Checked = true;
+                    }
+
+                    pickDateBirth.Value = DateTime.Parse(reader["date_birth"].ToString()); ;
+
+                }
+                else
+                {
+                    MessageBox.Show("Data Tidak Ditemukan", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { conn.Close(); }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            txtID.Visible   = false;
+            btnSave.Visible = false;
+            btnCari.Visible = false;
+
+
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data.Add("nama", "Jane Doe");
+            data.Add("email", "janedoe@example.com");
+            data.Add("password", "654321");
+            data.Add("tanggal_lahir", new DateTime(1995, 1, 1));
+            data.Add("jenis_kelamin", "Perempuan");
+
+            int rowsAffected = DBHelper.Update("employee", data, "id = 1");
+
+            if (rowsAffected > 0)
+            {
+                MessageBox.Show("Data berhasil diperbarui pada tabel employee.");
+            }
+            else
+            {
+                MessageBox.Show("Data gagal diperbarui pada tabel employee.");
+            }
+
         }
     }
 }

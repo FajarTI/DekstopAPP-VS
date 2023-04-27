@@ -296,6 +296,7 @@
             main.Name = "main";
             main.Size = new Size(1156, 615);
             main.TabIndex = 2;
+            main.Paint += main_Paint;
             // 
             // Dashboard
             // 

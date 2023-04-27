@@ -68,6 +68,7 @@
             btnCari.TabIndex = 3;
             btnCari.Text = "Cari ID";
             btnCari.UseVisualStyleBackColor = true;
+            btnCari.Click += btnCari_Click;
             // 
             // search
             // 

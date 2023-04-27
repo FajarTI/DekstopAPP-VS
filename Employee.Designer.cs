@@ -31,6 +31,9 @@
             viewEmployee = new DataGridView();
             label1 = new Label();
             groupBox1 = new GroupBox();
+            btnSave = new Button();
+            btnCari = new Button();
+            txtID = new TextBox();
             groupBox2 = new GroupBox();
             btnCancel = new Button();
             btnDeleteEmployee = new Button();
@@ -80,6 +83,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnSave);
+            groupBox1.Controls.Add(btnCari);
+            groupBox1.Controls.Add(txtID);
             groupBox1.Controls.Add(groupBox2);
             groupBox1.Controls.Add(rFemale);
             groupBox1.Controls.Add(rMale);
@@ -104,6 +110,39 @@
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Data Employee";
+            // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(781, 90);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(105, 23);
+            btnSave.TabIndex = 20;
+            btnSave.Text = "Simpan";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Visible = false;
+            btnSave.Click += btnSave_Click;
+            // 
+            // btnCari
+            // 
+            btnCari.Location = new Point(781, 58);
+            btnCari.Name = "btnCari";
+            btnCari.Size = new Size(105, 23);
+            btnCari.TabIndex = 19;
+            btnCari.Text = "Cari";
+            btnCari.UseVisualStyleBackColor = true;
+            btnCari.Visible = false;
+            btnCari.Click += btnCari_Click;
+            // 
+            // txtID
+            // 
+            txtID.Location = new Point(781, 25);
+            txtID.Name = "txtID";
+            txtID.PlaceholderText = "Masukan ID";
+            txtID.Size = new Size(105, 23);
+            txtID.TabIndex = 18;
+            txtID.TextAlign = HorizontalAlignment.Center;
+            txtID.Visible = false;
+            txtID.TextChanged += textBox1_TextChanged;
             // 
             // groupBox2
             // 
@@ -159,7 +198,7 @@
             // rFemale
             // 
             rFemale.AutoSize = true;
-            rFemale.Location = new Point(749, 124);
+            rFemale.Location = new Point(695, 124);
             rFemale.Name = "rFemale";
             rFemale.Size = new Size(63, 19);
             rFemale.TabIndex = 16;
@@ -170,7 +209,7 @@
             // rMale
             // 
             rMale.AutoSize = true;
-            rMale.Location = new Point(540, 127);
+            rMale.Location = new Point(486, 127);
             rMale.Name = "rMale";
             rMale.Size = new Size(51, 19);
             rMale.TabIndex = 15;
@@ -180,21 +219,21 @@
             // 
             // pickDateBirth
             // 
-            pickDateBirth.Location = new Point(540, 92);
+            pickDateBirth.Location = new Point(486, 92);
             pickDateBirth.Name = "pickDateBirth";
             pickDateBirth.Size = new Size(272, 23);
             pickDateBirth.TabIndex = 14;
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(540, 62);
+            txtAddress.Location = new Point(486, 62);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(272, 23);
             txtAddress.TabIndex = 13;
             // 
             // txtPhone
             // 
-            txtPhone.Location = new Point(540, 25);
+            txtPhone.Location = new Point(486, 25);
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(272, 23);
             txtPhone.TabIndex = 12;
@@ -202,7 +241,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(448, 131);
+            label9.Location = new Point(394, 131);
             label9.Name = "label9";
             label9.Size = new Size(50, 15);
             label9.TabIndex = 11;
@@ -211,7 +250,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(448, 98);
+            label8.Location = new Point(394, 98);
             label8.Name = "label8";
             label8.Size = new Size(64, 15);
             label8.TabIndex = 10;
@@ -220,7 +259,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(448, 65);
+            label7.Location = new Point(394, 65);
             label7.Name = "label7";
             label7.Size = new Size(54, 15);
             label7.TabIndex = 9;
@@ -229,7 +268,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(448, 33);
+            label6.Location = new Point(394, 33);
             label6.Name = "label6";
             label6.Size = new Size(46, 15);
             label6.TabIndex = 8;
@@ -335,18 +374,21 @@
         private Button btnDeleteEmployee;
         private Button btnUpdateEmployee;
         private Button btnAddEmployee;
-        private RadioButton rFemale;
-        private RadioButton rMale;
-        private DateTimePicker pickDateBirth;
-        private TextBox txtAddress;
-        private TextBox txtPhone;
         private Label label9;
         private Label label8;
         private Label label7;
         private Label label6;
-        private TextBox txtConfirm;
-        private TextBox txtPassword;
-        private TextBox txtEmail;
-        private TextBox txtName;
+        public RadioButton rFemale;
+        public RadioButton rMale;
+        public DateTimePicker pickDateBirth;
+        public TextBox txtAddress;
+        public TextBox txtPhone;
+        public TextBox txtConfirm;
+        public TextBox txtPassword;
+        public TextBox txtEmail;
+        public TextBox txtName;
+        public TextBox txtID;
+        private Button btnSave;
+        private Button btnCari;
     }
 }

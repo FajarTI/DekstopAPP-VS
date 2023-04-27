@@ -53,5 +53,10 @@ namespace Latihan_DesktopApp
         {
 
         }
+
+        private void main_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
