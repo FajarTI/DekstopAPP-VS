@@ -58,5 +58,10 @@ namespace Latihan_DesktopApp
         {
 
         }
+
+        private void btnMembership_Click(object sender, EventArgs e)
+        {
+            loadPanel(new Membershipcs());
+        }
     }
 }

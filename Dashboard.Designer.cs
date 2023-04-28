@@ -190,6 +190,7 @@
             btnMembership.TabIndex = 3;
             btnMembership.Text = "Membership";
             btnMembership.UseVisualStyleBackColor = false;
+            btnMembership.Click += btnMembership_Click;
             // 
             // panel7
             // 

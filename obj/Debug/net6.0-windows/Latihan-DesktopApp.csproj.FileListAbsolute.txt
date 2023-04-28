@@ -35,3 +35,5 @@ D:\LKS\C#\Latihan-DesktopApp\bin\Debug\net6.0-windows\MySql.Data.Entity.EF6.xml
 D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan-DesktopApp.csproj.CopyComplete
 D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.Dashboard.resources
 D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.Employee.resources
+D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.Membershipcs.resources
+D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.addMembership.resources
