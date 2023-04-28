@@ -6,7 +6,7 @@ namespace Latihan_DesktopApp
 {
     public class DBHelper
     {
-        private const string connnectionString = "server=localhost;database=mandhegsystemparking;uid=root;password=;";
+        private const string connnectionString = "server=localhost;port=3307;database=mandhegparkingsystem;uid=root;password=;";
 
         //Helper Insert
         public static int Insert(string tableName, Dictionary<string, object> data)
@@ -104,6 +104,45 @@ namespace Latihan_DesktopApp
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
+                        rowsAffected = cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return rowsAffected;
+        }
+
+        //Helper SoftDelete - Hapus Sementara
+        public static int SoftDelete(string tableName, Dictionary<string, object> data, string condition)
+        {
+            int rowsAffected = 0;
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connnectionString))
+                {
+                    conn.Open();
+
+                    StringBuilder sb = new StringBuilder();
+
+                    foreach (KeyValuePair<string, object> pair in data)
+                    {
+                        sb.AppendFormat("{0}=@{0}, ", pair.Key);
+                    }
+
+                    sb.Remove(sb.Length - 2, 2);
+
+                    string query = string.Format("UPDATE {0} SET {1} WHERE {2}", tableName, sb, condition);
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        foreach (KeyValuePair<string, object> pair in data)
+                        {
+                            cmd.Parameters.AddWithValue("@" + pair.Key, pair.Value);
+                        }
+
                         rowsAffected = cmd.ExecuteNonQuery();
                     }
                 }

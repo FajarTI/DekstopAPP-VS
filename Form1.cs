@@ -7,7 +7,7 @@ namespace Latihan_DesktopApp
 {
     public partial class Form1 : Form
     {
-        private const string connnection = "server=localhost;database=mandhegsystemparking;uid=root;password=;";
+        
 
         public Form1()
         {

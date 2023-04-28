@@ -31,6 +31,7 @@
             viewEmployee = new DataGridView();
             label1 = new Label();
             groupBox1 = new GroupBox();
+            btnDelete = new Button();
             btnSave = new Button();
             btnCari = new Button();
             txtID = new TextBox();
@@ -48,12 +49,12 @@
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
-            txtConfirm = new TextBox();
             txtPassword = new TextBox();
+            txtPasswordOld = new TextBox();
             txtEmail = new TextBox();
             txtName = new TextBox();
-            label5 = new Label();
-            label4 = new Label();
+            txtNewPassword = new Label();
+            txtOldPassword = new Label();
             label3 = new Label();
             label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)viewEmployee).BeginInit();
@@ -83,6 +84,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnDelete);
             groupBox1.Controls.Add(btnSave);
             groupBox1.Controls.Add(btnCari);
             groupBox1.Controls.Add(txtID);
@@ -96,12 +98,12 @@
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(txtConfirm);
             groupBox1.Controls.Add(txtPassword);
+            groupBox1.Controls.Add(txtPasswordOld);
             groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(txtName);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(txtNewPassword);
+            groupBox1.Controls.Add(txtOldPassword);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Location = new Point(12, 376);
@@ -110,6 +112,18 @@
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Data Employee";
+            groupBox1.Enter += groupBox1_Enter;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(781, 90);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(105, 23);
+            btnDelete.TabIndex = 21;
+            btnDelete.Text = "Hapus";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Visible = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnSave
             // 
@@ -165,6 +179,7 @@
             btnCancel.TabIndex = 3;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnDeleteEmployee
             // 
@@ -174,6 +189,7 @@
             btnDeleteEmployee.TabIndex = 2;
             btnDeleteEmployee.Text = "Delete Employee";
             btnDeleteEmployee.UseVisualStyleBackColor = true;
+            btnDeleteEmployee.Click += btnDeleteEmployee_Click;
             // 
             // btnUpdateEmployee
             // 
@@ -274,19 +290,21 @@
             label6.TabIndex = 8;
             label6.Text = "Phone*";
             // 
-            // txtConfirm
-            // 
-            txtConfirm.Location = new Point(141, 120);
-            txtConfirm.Name = "txtConfirm";
-            txtConfirm.Size = new Size(237, 23);
-            txtConfirm.TabIndex = 7;
-            // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(141, 87);
+            txtPassword.Location = new Point(141, 118);
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(237, 23);
-            txtPassword.TabIndex = 6;
+            txtPassword.TabIndex = 7;
+            // 
+            // txtPasswordOld
+            // 
+            txtPasswordOld.Location = new Point(141, 87);
+            txtPasswordOld.Name = "txtPasswordOld";
+            txtPasswordOld.PasswordChar = '*';
+            txtPasswordOld.Size = new Size(237, 23);
+            txtPasswordOld.TabIndex = 6;
             // 
             // txtEmail
             // 
@@ -302,24 +320,24 @@
             txtName.Size = new Size(237, 23);
             txtName.TabIndex = 4;
             // 
-            // label5
+            // txtNewPassword
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(8, 128);
-            label5.Name = "label5";
-            label5.Size = new Size(109, 15);
-            label5.TabIndex = 3;
-            label5.Text = "Confirm Password*";
+            txtNewPassword.AutoSize = true;
+            txtNewPassword.Location = new Point(8, 126);
+            txtNewPassword.Name = "txtNewPassword";
+            txtNewPassword.Size = new Size(104, 15);
+            txtNewPassword.TabIndex = 3;
+            txtNewPassword.Text = "Confirm Password";
             // 
-            // label4
+            // txtOldPassword
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(8, 95);
-            label4.Name = "label4";
-            label4.Size = new Size(99, 15);
-            label4.TabIndex = 2;
-            label4.Text = "Create Password*";
-            label4.Click += label4_Click;
+            txtOldPassword.AutoSize = true;
+            txtOldPassword.Location = new Point(8, 95);
+            txtOldPassword.Name = "txtOldPassword";
+            txtOldPassword.Size = new Size(94, 15);
+            txtOldPassword.TabIndex = 2;
+            txtOldPassword.Text = "Create Password";
+            txtOldPassword.Click += label4_Click;
             // 
             // label3
             // 
@@ -365,8 +383,8 @@
         private DataGridView viewEmployee;
         private Label label1;
         private GroupBox groupBox1;
-        private Label label5;
-        private Label label4;
+        private Label txtNewPassword;
+        private Label txtOldPassword;
         private Label label3;
         private Label label2;
         private GroupBox groupBox2;
@@ -383,12 +401,13 @@
         public DateTimePicker pickDateBirth;
         public TextBox txtAddress;
         public TextBox txtPhone;
-        public TextBox txtConfirm;
         public TextBox txtPassword;
+        public TextBox txtPasswordOld;
         public TextBox txtEmail;
         public TextBox txtName;
         public TextBox txtID;
         private Button btnSave;
         private Button btnCari;
+        private Button btnDelete;
     }
 }

@@ -17,7 +17,7 @@ namespace Latihan_DesktopApp
 {
     public partial class Employee : Form
     {
-        private const string connnection = "server=localhost;database=mandhegsystemparking;uid=root;password=;";
+        private const string connnection = "server=localhost;port=3307;database=mandhegparkingsystem;uid=root;password=;";
         private MySqlCommand cmd;
 
 
@@ -39,7 +39,7 @@ namespace Latihan_DesktopApp
                 {
                     conn.Open();
 
-                    string query = "SELECT id,name,email,phone_number,address,date_birth,gender,created_at,last_updated_at,deleted_at FROM employee ORDER BY id DESC";
+                    string query = "SELECT * FROM employee ORDER BY id DESC";
                     cmd = new MySqlCommand(query, conn);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                     cmd.ExecuteNonQuery();
@@ -61,7 +61,7 @@ namespace Latihan_DesktopApp
             {
                 conn.Open();
 
-                string query = "SELECT id,name,email,phone_number,address,date_birth,gender,created_at,last_updated_at,deleted_at FROM employee ORDER BY id DESC";
+                string query = "SELECT * FROM employee ORDER BY id DESC";
                 cmd = new MySqlCommand(query, conn);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 cmd.ExecuteNonQuery();
@@ -78,8 +78,8 @@ namespace Latihan_DesktopApp
         {
             string name = txtName.Text;
             string email = txtEmail.Text;
-            string password = txtPassword.Text;
-            string confirm = txtConfirm.Text;
+            string password = txtPasswordOld.Text;
+            string confirm = txtPassword.Text;
             string phone_number = txtPhone.Text;
             string address = txtAddress.Text;
 
@@ -95,8 +95,11 @@ namespace Latihan_DesktopApp
                 MessageBox.Show("Masukan Password Dengan Benar !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            {
 
+            if (password.Length < 6)
+            {
+                MessageBox.Show("Masukan Password Minimal 6 Karakter !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             if (rMale.Checked)
@@ -117,7 +120,7 @@ namespace Latihan_DesktopApp
                 data.Add("password", passHash);
                 data.Add("phone_number", phone_number);
                 data.Add("address", address);
-                data.Add("date_birth", pickDateBirth.Value.Date);
+                data.Add("date_of_birth", pickDateBirth.Value.Date);
                 data.Add("gender", gender);
 
                 int rowsAffected = DBHelper.Insert("employee", data);
@@ -157,9 +160,12 @@ namespace Latihan_DesktopApp
 
         private void btnUpdateEmployee_Click(object sender, EventArgs e)
         {
+            txtOldPassword.Text = "New Password";
+
             txtID.Visible = true;
             btnSave.Visible = true;
             btnCari.Visible = true;
+            btnDelete.Visible = false;
         }
         private void viewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -173,6 +179,8 @@ namespace Latihan_DesktopApp
 
         private void btnCari_Click(object sender, EventArgs e)
         {
+            txtPasswordOld.Text = string.Empty;
+            txtPassword.Text = string.Empty;
 
             MySqlConnection conn = new MySqlConnection(connnection);
             try
@@ -189,11 +197,7 @@ namespace Latihan_DesktopApp
                     txtEmail.Text = reader["email"].ToString();
                     txtAddress.Text = reader["address"].ToString();
                     txtPhone.Text = reader["phone_number"].ToString();
-
                     string gender = reader["gender"].ToString();
-                    string birth = reader["date_birth"].ToString();
-
-                    
 
                     if (gender == "Male")
                     {
@@ -204,7 +208,7 @@ namespace Latihan_DesktopApp
                         rFemale.Checked = true;
                     }
 
-                    pickDateBirth.Value = DateTime.Parse(reader["date_birth"].ToString()); ;
+                    pickDateBirth.Value = DateTime.Parse(reader["date_of_birth"].ToString()); ;
 
                 }
                 else
@@ -222,29 +226,151 @@ namespace Latihan_DesktopApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            txtID.Visible   = false;
-            btnSave.Visible = false;
-            btnCari.Visible = false;
+            string name = txtName.Text;
+            string email = txtEmail.Text;
+            string password = txtPasswordOld.Text;
+            string confirm = txtPassword.Text;
+            string phone_number = txtPhone.Text;
+            string address = txtAddress.Text;
+            string id = "id = " + txtID.Text;
 
+            string passHash = GetSHA256Hash(password);
 
-            Dictionary<string, object> data = new Dictionary<string, object>();
-            data.Add("nama", "Jane Doe");
-            data.Add("email", "janedoe@example.com");
-            data.Add("password", "654321");
-            data.Add("tanggal_lahir", new DateTime(1995, 1, 1));
-            data.Add("jenis_kelamin", "Perempuan");
-
-            int rowsAffected = DBHelper.Update("employee", data, "id = 1");
-
-            if (rowsAffected > 0)
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(address) || string.IsNullOrEmpty(phone_number))
             {
-                MessageBox.Show("Data berhasil diperbarui pada tabel employee.");
+                MessageBox.Show("Silahkan Lengkapi Feild !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!password.Equals(confirm))
+            {
+                MessageBox.Show("Masukan Password Dengan Benar !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (rMale.Checked)
+            {
+                gender = "Male";
+            }
+            else if (rFemale.Checked)
+            {
+                gender = "Female";
+            }
+
+
+            if (rMale.Checked || rFemale.Checked)
+            {
+                if (!password.Equals(""))
+                {
+                    if (password.Length < 6)
+                    {
+                        MessageBox.Show("Masukan Password Minimal 6 Karakter !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    Dictionary<string, object> data = new Dictionary<string, object>();
+                    data.Add("name", name);
+                    data.Add("email", email);
+                    data.Add("password", passHash);
+                    data.Add("phone_number", phone_number);
+                    data.Add("address", address);
+                    data.Add("date_of_birth", pickDateBirth.Value.Date);
+                    data.Add("gender", gender);
+                    data.Add("last_updated_at", DateTime.Now);
+
+                    int rowsAffected = DBHelper.Update("employee", data, id);
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Data Berhasil Diubah!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        reload();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data gagal diuabh", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (password.Equals(""))
+                {
+                    Dictionary<string, object> data = new Dictionary<string, object>();
+                    data.Add("name", name);
+                    data.Add("email", email);
+                    data.Add("phone_number", phone_number);
+                    data.Add("address", address);
+                    data.Add("date_of_birth", pickDateBirth.Value.Date);
+                    data.Add("gender", gender);
+                    data.Add("last_updated_at", DateTime.Now);
+
+                    int rowsAffected = DBHelper.Update("employee", data, id);
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Data Berhasil Diubah!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        reload();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data gagal diuabh", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("Data gagal diperbarui pada tabel employee.");
+                MessageBox.Show("Silahkan pilih salah satu jenis kelamin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            txtName.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtPasswordOld.Text = string.Empty;
+            txtPassword.Text = string.Empty;
+            txtPhone.Text = string.Empty;
+            txtAddress.Text = string.Empty;
+
+            if (rFemale.Checked || rMale.Checked)
+            {
+                rMale.Checked = false;
+                rFemale.Checked = false;
+            }
+
+            txtID.Visible = false;
+            btnCari.Visible = false;
+            btnSave.Visible = false;
+            btnDelete.Visible = false;
+        }
+
+        private void btnDeleteEmployee_Click(object sender, EventArgs e)
+        {
+            txtID.Visible = true;
+            btnSave.Visible = false;
+            btnCari.Visible = true;
+            btnDelete.Visible = true;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string id = "id = " + txtID.Text;
+
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data.Add("deleted_at", DateTime.Now);
+
+            int rowsAffected = DBHelper.Update("employee", data, id);
+
+            if (rowsAffected > 0)
+            {
+                MessageBox.Show("Data berhasil dihapus pada tabel employee.");
+                reload();
+            }
+            else
+            {
+                MessageBox.Show("Data gagal dihapus pada tabel employee.");
+            }
         }
     }
 }
