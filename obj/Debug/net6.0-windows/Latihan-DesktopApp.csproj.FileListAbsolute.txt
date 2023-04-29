@@ -37,3 +37,4 @@ D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.Dashboa
 D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.Employee.resources
 D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.Membershipcs.resources
 D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.addMembership.resources
+D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.updateMembership.resources

@@ -1,6 +1,6 @@
 ﻿namespace Latihan_DesktopApp
 {
-    partial class addMembership
+    partial class updateMembership
     {
         /// <summary>
         /// Required designer variable.
@@ -28,47 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tbMembership = new TextBox();
             btnSave = new Button();
+            tbUpdateMembership = new TextBox();
             SuspendLayout();
-            // 
-            // tbMembership
-            // 
-            tbMembership.Location = new Point(12, 12);
-            tbMembership.Name = "tbMembership";
-            tbMembership.PlaceholderText = "Input Here ...";
-            tbMembership.Size = new Size(253, 23);
-            tbMembership.TabIndex = 0;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(91, 41);
+            btnSave.Location = new Point(89, 53);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(96, 28);
-            btnSave.TabIndex = 1;
-            btnSave.Text = "Tambahkan";
+            btnSave.TabIndex = 3;
+            btnSave.Text = "Simpan";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
-            // addMembership
+            // tbUpdateMembership
+            // 
+            tbUpdateMembership.Location = new Point(12, 12);
+            tbUpdateMembership.Name = "tbUpdateMembership";
+            tbUpdateMembership.PlaceholderText = "Input Here ...";
+            tbUpdateMembership.Size = new Size(253, 23);
+            tbUpdateMembership.TabIndex = 2;
+            // 
+            // updateMembership
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(278, 89);
+            ClientSize = new Size(281, 93);
             Controls.Add(btnSave);
-            Controls.Add(tbMembership);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            Name = "addMembership";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Tambahkan Membership";
-            Load += addMembership_Load;
+            Controls.Add(tbUpdateMembership);
+            Name = "updateMembership";
+            Text = "updateMembership";
+            Load += updateMembership_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TextBox tbMembership;
         private Button btnSave;
+        private TextBox tbUpdateMembership;
     }
 }

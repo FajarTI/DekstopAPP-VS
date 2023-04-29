@@ -44,13 +44,6 @@ namespace Latihan_DesktopApp
             InitializeComponent();
         }
 
-        public void LoadDataGrid()
-        {
-            DataTable dt = DBHelper.GetData(tableName);
-            viewMembership.DataSource = dt;
-            viewMembership.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            viewMembership.AllowUserToAddRows = false;
-        }
 
         private void Membershipcs_Load(object sender, EventArgs e)
         {
@@ -72,6 +65,9 @@ namespace Latihan_DesktopApp
             viewMembership.Columns.Add(btnDelete);
             viewMembership.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             viewMembership.AllowUserToAddRows = false;
+
+            timer1.Interval = 1000;
+            timer1.Start();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -81,7 +77,59 @@ namespace Latihan_DesktopApp
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
-            new addMembership().ShowDialog();
+            new addMembership().ShowDialog(); //membuka form untuk menambahkan data
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DataTable dt = DBHelper.GetData(tableName);
+            viewMembership.DataSource = dt;
+        }
+
+        private void viewMembership_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id = Convert.ToInt32(viewMembership.Rows[e.RowIndex].Cells["id"].Value);
+
+            // Fitur Delete
+            if (viewMembership.Columns[e.ColumnIndex] is DataGridViewButtonColumn && viewMembership.Columns[e.ColumnIndex].HeaderText == "Delete" && e.RowIndex >= 0)
+            {
+                if (!string.IsNullOrEmpty(viewMembership.Rows[e.RowIndex].Cells["deleted_at"].Value.ToString()))
+                {
+                    MessageBox.Show("Data telah dihapus sebelumnya!","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Apakah Anda Yakin?", "Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        Dictionary<string, object> data = new Dictionary<string, object>();
+                        data.Add("deleted_at", DateTime.Now);
+                        try
+                        {
+                            DBHelper.SoftDelete(tableName, data, "id=" + id);
+                            MessageBox.Show("Data telah dihapus!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        }catch (Exception ex)
+                        {
+                            MessageBox.Show("Data gagal dihapus!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
+
+
+            //Fitur Update
+            if (viewMembership.Columns[e.ColumnIndex] is DataGridViewButtonColumn && viewMembership.Columns[e.ColumnIndex].HeaderText == "Edit" && e.RowIndex >= 0)
+            {
+                if (!string.IsNullOrEmpty(viewMembership.Rows[e.RowIndex].Cells["deleted_at"].Value.ToString()))
+                {
+                    MessageBox.Show("Data telah dihapus sebelumnya!");
+                    return;
+                }
+                updateMembership updateMembership = new updateMembership(id); //membuka form update dan mengirimkan id dari data yang akan diedit
+                DialogResult result = updateMembership.ShowDialog();
+            }
+        }
+
     }
 }

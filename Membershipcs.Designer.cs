@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             viewMembership = new DataGridView();
             btnTambah = new Button();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)viewMembership).BeginInit();
             SuspendLayout();
             // 
@@ -55,8 +57,10 @@
             viewMembership.Name = "viewMembership";
             viewMembership.ReadOnly = true;
             viewMembership.RowTemplate.Height = 25;
+            viewMembership.SelectionMode = DataGridViewSelectionMode.CellSelect;
             viewMembership.Size = new Size(1132, 484);
             viewMembership.TabIndex = 1;
+            viewMembership.CellContentClick += viewMembership_CellContentClick;
             // 
             // btnTambah
             // 
@@ -67,6 +71,10 @@
             btnTambah.Text = "Tambahkan";
             btnTambah.UseVisualStyleBackColor = true;
             btnTambah.Click += btnTambah_Click;
+            // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
             // 
             // Membershipcs
             // 
@@ -90,5 +98,6 @@
         private Label label1;
         private DataGridView viewMembership;
         private Button btnTambah;
+        private System.Windows.Forms.Timer timer1;
     }
 }
