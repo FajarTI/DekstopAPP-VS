@@ -41,3 +41,4 @@ D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.updateM
 D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.VehicleType.resources
 D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.addVehicleType.resources
 D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.UpdateVehilceType.resources
+D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.HourlyRates.resources

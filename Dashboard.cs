@@ -68,5 +68,10 @@ namespace Latihan_DesktopApp
         {
             loadPanel(new VehicleType());
         }
+
+        private void btnHourlyRates_Click(object sender, EventArgs e)
+        {
+            loadPanel(new HourlyRates());
+        }
     }
 }

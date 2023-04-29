@@ -258,6 +258,7 @@
             btnHourlyRates.TabIndex = 3;
             btnHourlyRates.Text = "Hourly Rates";
             btnHourlyRates.UseVisualStyleBackColor = false;
+            btnHourlyRates.Click += btnHourlyRates_Click;
             // 
             // panel2
             // 
