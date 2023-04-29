@@ -107,5 +107,10 @@ namespace Latihan_DesktopApp
                 MessageBox.Show("Failed!");
             }
         }
+
+        private void viewHourlyrates_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

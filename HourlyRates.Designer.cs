@@ -52,6 +52,7 @@
             viewHourlyrates.SelectionMode = DataGridViewSelectionMode.CellSelect;
             viewHourlyrates.Size = new Size(1132, 357);
             viewHourlyrates.TabIndex = 7;
+            viewHourlyrates.CellContentClick += viewHourlyrates_CellContentClick;
             // 
             // label1
             // 
