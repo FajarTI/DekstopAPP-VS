@@ -63,5 +63,10 @@ namespace Latihan_DesktopApp
         {
             loadPanel(new Membershipcs());
         }
+
+        private void btnVehicletype_Click(object sender, EventArgs e)
+        {
+            loadPanel(new VehicleType());
+        }
     }
 }

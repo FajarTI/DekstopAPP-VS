@@ -52,10 +52,12 @@ namespace Latihan_DesktopApp
             DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
             DataGridViewButtonColumn btnEdit = new DataGridViewButtonColumn();
 
+            //Menambahkan button Edit
             btnEdit.HeaderText = "Edit";
             btnEdit.Text = "Edit";
             btnEdit.UseColumnTextForButtonValue = true;
 
+            //Menambahkan button Delete
             btnDelete.HeaderText = "Delete";
             btnDelete.Text = "Delete";
             btnDelete.UseColumnTextForButtonValue = true;
@@ -90,7 +92,7 @@ namespace Latihan_DesktopApp
         {
             int id = Convert.ToInt32(viewMembership.Rows[e.RowIndex].Cells["id"].Value);
 
-            // Fitur Delete
+            // Fitur Delete | Jika tombol delete diklik
             if (viewMembership.Columns[e.ColumnIndex] is DataGridViewButtonColumn && viewMembership.Columns[e.ColumnIndex].HeaderText == "Delete" && e.RowIndex >= 0)
             {
                 if (!string.IsNullOrEmpty(viewMembership.Rows[e.RowIndex].Cells["deleted_at"].Value.ToString()))
@@ -118,7 +120,7 @@ namespace Latihan_DesktopApp
             }
 
 
-            //Fitur Update
+            //Fitur Update | Jika tombol edit diklik
             if (viewMembership.Columns[e.ColumnIndex] is DataGridViewButtonColumn && viewMembership.Columns[e.ColumnIndex].HeaderText == "Edit" && e.RowIndex >= 0)
             {
                 if (!string.IsNullOrEmpty(viewMembership.Rows[e.RowIndex].Cells["deleted_at"].Value.ToString()))

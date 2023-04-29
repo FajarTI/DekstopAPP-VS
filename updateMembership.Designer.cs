@@ -49,6 +49,7 @@
             tbUpdateMembership.PlaceholderText = "Input Here ...";
             tbUpdateMembership.Size = new Size(253, 23);
             tbUpdateMembership.TabIndex = 2;
+            tbUpdateMembership.TextChanged += tbUpdateMembership_TextChanged;
             // 
             // updateMembership
             // 

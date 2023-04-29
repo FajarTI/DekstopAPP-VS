@@ -10,39 +10,32 @@ using System.Windows.Forms;
 
 namespace Latihan_DesktopApp
 {
-    public partial class updateMembership : Form
+    public partial class UpdateVehilceType : Form
     {
-        public int IdMembership;
-        public updateMembership(int id)
+        public int idVehicleType;
+        public UpdateVehilceType(int id)
         {
             InitializeComponent();
-            IdMembership = id;
+            this.idVehicleType = id;
         }
 
-        private void updateMembership_Load(object sender, EventArgs e)
-        {
-            DataTable dt = DBHelper.GetData("membership", "id= " + IdMembership);
-            if (dt.Rows.Count > 0)
-            {
-                tbUpdateMembership.Text = dt.Rows[0]["name"].ToString();
-            }
-        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             //validasi
-            if (tbUpdateMembership.Text == string.Empty)
+            if (tbUpdateVehicleType.Text == string.Empty)
             {
                 MessageBox.Show("Fields tidak boleh kosong!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+
             //update data
             Dictionary<string, object> data = new Dictionary<string, object>();
-            data.Add("name", tbUpdateMembership.Text);
+            data.Add("name", tbUpdateVehicleType.Text);
             data.Add("last_updated_at", DateTime.Now);
             try
             {
-                DBHelper.Update("membership", data, "id = " + IdMembership);
+                DBHelper.Update("vehicletype", data, "id = " + idVehicleType);
                 MessageBox.Show("Data berhasil diupdate!", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -52,9 +45,13 @@ namespace Latihan_DesktopApp
             }
         }
 
-        private void tbUpdateMembership_TextChanged(object sender, EventArgs e)
+        private void UpdateVehilceType_Load(object sender, EventArgs e)
         {
-
+            DataTable dt = DBHelper.GetData("vehicletype", "id= " + idVehicleType);
+            if (dt.Rows.Count > 0)
+            {
+                tbUpdateVehicleType.Text = dt.Rows[0]["name"].ToString();
+            }
         }
     }
 }

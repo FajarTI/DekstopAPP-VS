@@ -235,6 +235,7 @@
             btnVehicletype.TabIndex = 3;
             btnVehicletype.Text = "Vehicle Type";
             btnVehicletype.UseVisualStyleBackColor = false;
+            btnVehicletype.Click += btnVehicletype_Click;
             // 
             // panel6
             // 

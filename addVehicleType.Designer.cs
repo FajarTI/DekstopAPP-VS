@@ -1,6 +1,6 @@
 ﻿namespace Latihan_DesktopApp
 {
-    partial class addMembership
+    partial class addVehicleType
     {
         /// <summary>
         /// Required designer variable.
@@ -28,48 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tbMembership = new TextBox();
             btnSave = new Button();
+            tbVehicleType = new TextBox();
             SuspendLayout();
-            // 
-            // tbMembership
-            // 
-            tbMembership.Location = new Point(12, 12);
-            tbMembership.Name = "tbMembership";
-            tbMembership.PlaceholderText = "Input Here ...";
-            tbMembership.Size = new Size(253, 23);
-            tbMembership.TabIndex = 0;
-            tbMembership.TextChanged += tbMembership_TextChanged;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(91, 41);
+            btnSave.Location = new Point(92, 45);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(96, 28);
-            btnSave.TabIndex = 1;
+            btnSave.TabIndex = 3;
             btnSave.Text = "Tambahkan";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
-            // addMembership
+            // tbVehicleType
+            // 
+            tbVehicleType.Location = new Point(13, 16);
+            tbVehicleType.Name = "tbVehicleType";
+            tbVehicleType.PlaceholderText = "Input Here ...";
+            tbVehicleType.Size = new Size(253, 23);
+            tbVehicleType.TabIndex = 2;
+            // 
+            // addVehicleType
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(278, 89);
             Controls.Add(btnSave);
-            Controls.Add(tbMembership);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            Name = "addMembership";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Tambahkan Membership";
-            Load += addMembership_Load;
+            Controls.Add(tbVehicleType);
+            Name = "addVehicleType";
+            Text = "addVehicleType";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TextBox tbMembership;
         private Button btnSave;
+        private TextBox tbVehicleType;
     }
 }

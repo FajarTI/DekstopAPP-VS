@@ -38,3 +38,6 @@ D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.Employe
 D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.Membershipcs.resources
 D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.addMembership.resources
 D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.updateMembership.resources
+D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.VehicleType.resources
+D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.addVehicleType.resources
+D:\LKS\C#\Latihan-DesktopApp\obj\Debug\net6.0-windows\Latihan_DesktopApp.UpdateVehilceType.resources

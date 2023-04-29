@@ -10,22 +10,19 @@ using System.Windows.Forms;
 
 namespace Latihan_DesktopApp
 {
-
-    public partial class addMembership : Form
+    public partial class addVehicleType : Form
     {
-        private string tableName = "membership";
+        private string tableName = "vehicletype";
         private string columnName = "name";
         private string columnCreated = "created_at";
-
-        DateTime created = DateTime.Now;
-        public addMembership()
+        public addVehicleType()
         {
             InitializeComponent();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string isiFields = tbMembership.Text;
+            string isiFields = tbVehicleType.Text;
 
             //validasi textbox
             if (isiFields == string.Empty)
@@ -47,7 +44,7 @@ namespace Latihan_DesktopApp
             //menambah data
             Dictionary<string, object> data = new Dictionary<string, object>();
             data.Add(columnName, isiFields);
-            data.Add(columnCreated, created);
+            data.Add(columnCreated, DateTime.Now);
 
             int rowsAffected = DBHelper.Insert(tableName, data);
 
@@ -62,15 +59,6 @@ namespace Latihan_DesktopApp
             {
                 MessageBox.Show("Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private void addMembership_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbMembership_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
