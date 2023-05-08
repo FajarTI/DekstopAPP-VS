@@ -19,13 +19,22 @@
     <Compile Update="HourlyRates.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Member.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Membershipcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ParkingData.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="updateMembership.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UpdateVehilceType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vehicle.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="VehicleType.cs">

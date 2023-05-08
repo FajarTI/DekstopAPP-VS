@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 
 /*--------------------
  * :::: Ceritanya ::::
@@ -97,7 +89,7 @@ namespace Latihan_DesktopApp
             {
                 if (!string.IsNullOrEmpty(viewMembership.Rows[e.RowIndex].Cells["deleted_at"].Value.ToString()))
                 {
-                    MessageBox.Show("Data telah dihapus sebelumnya!","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    MessageBox.Show("Data telah dihapus sebelumnya!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
@@ -111,7 +103,8 @@ namespace Latihan_DesktopApp
                             DBHelper.SoftDelete(tableName, data, "id=" + id);
                             MessageBox.Show("Data telah dihapus!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                        }catch (Exception ex)
+                        }
+                        catch (Exception ex)
                         {
                             MessageBox.Show("Data gagal dihapus!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }

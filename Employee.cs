@@ -1,17 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using System.Xml.Linq;
-using Timer = System.Windows.Forms.Timer;
 
 namespace Latihan_DesktopApp
 {
@@ -135,7 +125,7 @@ namespace Latihan_DesktopApp
             }
         }
 
-        
+
         /**********************************************************************************/
         /******************************** UPDATE ******************************************/
         /**********************************************************************************/
@@ -354,6 +344,11 @@ namespace Latihan_DesktopApp
             btnCari.Visible = false;
             btnSave.Visible = false;
             btnDelete.Visible = false;
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

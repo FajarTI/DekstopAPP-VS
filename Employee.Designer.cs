@@ -280,6 +280,7 @@
             label7.Size = new Size(54, 15);
             label7.TabIndex = 9;
             label7.Text = "Address*";
+            label7.Click += label7_Click;
             // 
             // label6
             // 

@@ -32,9 +32,12 @@
             label1 = new Label();
             btnTambah = new Button();
             groupBox1 = new GroupBox();
+            btnSave = new Button();
             tbValue = new TextBox();
             comboBox2 = new ComboBox();
             comboBox1 = new ComboBox();
+            button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)viewHourlyrates).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -76,6 +79,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnSave);
             groupBox1.Controls.Add(tbValue);
             groupBox1.Controls.Add(comboBox2);
             groupBox1.Controls.Add(comboBox1);
@@ -86,6 +90,18 @@
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
             groupBox1.Text = "Tambahkan Tarif Per Jam";
+            groupBox1.Visible = false;
+            // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(6, 115);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(205, 30);
+            btnSave.TabIndex = 12;
+            btnSave.Text = "Simpan";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Visible = false;
+            btnSave.Click += btnSave_Click;
             // 
             // tbValue
             // 
@@ -114,11 +130,33 @@
             comboBox1.TabIndex = 9;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
+            // button1
+            // 
+            button1.Location = new Point(939, 451);
+            button1.Name = "button1";
+            button1.Size = new Size(205, 30);
+            button1.TabIndex = 12;
+            button1.Text = "Tambah";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(939, 487);
+            button2.Name = "button2";
+            button2.Size = new Size(205, 30);
+            button2.TabIndex = 13;
+            button2.Text = "Cancel";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // HourlyRates
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1156, 615);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(groupBox1);
             Controls.Add(viewHourlyrates);
             Controls.Add(label1);
@@ -142,5 +180,8 @@
         private TextBox tbValue;
         private ComboBox comboBox2;
         private ComboBox comboBox1;
+        private Button button1;
+        private Button btnSave;
+        private Button button2;
     }
 }

@@ -123,6 +123,7 @@
             btnParkingData.TabIndex = 3;
             btnParkingData.Text = "Parking Data";
             btnParkingData.UseVisualStyleBackColor = false;
+            btnParkingData.Click += btnParkingData_Click;
             // 
             // panel3
             // 
@@ -168,6 +169,7 @@
             btnVehicle.TabIndex = 3;
             btnVehicle.Text = "Vehicle";
             btnVehicle.UseVisualStyleBackColor = false;
+            btnVehicle.Click += btnVehicle_Click;
             // 
             // panel4
             // 
@@ -213,6 +215,7 @@
             btnMember.TabIndex = 3;
             btnMember.Text = "Member";
             btnMember.UseVisualStyleBackColor = false;
+            btnMember.Click += btnMember_Click;
             // 
             // panel5
             // 

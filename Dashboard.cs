@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Latihan_DesktopApp
+﻿namespace Latihan_DesktopApp
 {
     public partial class Dashboard : Form
     {
@@ -72,6 +62,21 @@ namespace Latihan_DesktopApp
         private void btnHourlyRates_Click(object sender, EventArgs e)
         {
             loadPanel(new HourlyRates());
+        }
+
+        private void btnMember_Click(object sender, EventArgs e)
+        {
+            loadPanel(new Member());
+        }
+
+        private void btnVehicle_Click(object sender, EventArgs e)
+        {
+            loadPanel(new Vehicle());
+        }
+
+        private void btnParkingData_Click(object sender, EventArgs e)
+        {
+            loadPanel(new ParkingData());
         }
     }
 }

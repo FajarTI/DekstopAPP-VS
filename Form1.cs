@@ -1,4 +1,3 @@
-using MySql.Data.MySqlClient;
 using System.Data;
 using System.Security.Cryptography;
 using System.Text;
@@ -7,7 +6,7 @@ namespace Latihan_DesktopApp
 {
     public partial class Form1 : Form
     {
-        
+
 
         public Form1()
         {
